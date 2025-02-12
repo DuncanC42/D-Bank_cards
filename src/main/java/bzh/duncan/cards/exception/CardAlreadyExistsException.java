@@ -1,4 +1,14 @@
 package bzh.duncan.cards.exception;
 
-public class CardAlreadyExistsException {
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+public class CardAlreadyExistsException extends RuntimeException {
+
+    public CardAlreadyExistsException(String message){
+        super(message);
+    }
+
 }
