@@ -5,19 +5,10 @@ spring:
     name: "cards"
   profiles:
     active: "prod"
-  config:
-    import: "optional:configserver:http://localhost:8071/"
-
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
-
   datasource:
-    url: jdbc:h2:mem:bankdb
+    url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
-    username: admin
+    username: sa
     password: ''
   h2:
     console:
@@ -27,9 +18,16 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
 
 management:
   endpoints:
     web:
       exposure:
-        include: "*" #exclude all endpoints
+        include: "*"
